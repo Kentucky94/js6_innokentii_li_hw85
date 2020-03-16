@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try{
-    const album = await Album.find({_id: req.params.id}).populate('artist');
+    const album = await Album.findOne({_id: req.params.id}).populate('artist');
 
     res.send(album);
   }catch(e){

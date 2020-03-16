@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {fetchTracks} from "../../store/actions";
+import {fetchAlbum, fetchTracks} from "../../store/actions";
 import {connect} from "react-redux";
 import TrackBlock from "../../components/TrackBlock/TrackBlock";
 
 class TracksPage extends Component {
   async componentDidMount() {
     await this.props.fetchTracks(this.props.match.params.id);
+    await this.props.fetchAlbum(this.props.match.params.id);
   }
 
   render() {
@@ -19,6 +20,7 @@ class TracksPage extends Component {
 
     return (
       <div>
+        <h2>{this.props.album.title}</h2>
         {tracks}
       </div>
     );
@@ -27,10 +29,12 @@ class TracksPage extends Component {
 
 const mapStateToProps = state => ({
   tracks: state.tracks,
+  album: state.album,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchTracks: id => dispatch(fetchTracks(id)),
+  fetchAlbum: id => dispatch(fetchAlbum(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TracksPage);

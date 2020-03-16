@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {fetchAlbums} from "../../store/actions";
 import {connect} from "react-redux";
+
+import {fetchAlbum, fetchAlbums, fetchArtist} from "../../store/actions";
 import AlbumBlock from "../../components/AlbumBlock/AlbumBlock";
+import './AlbumsPage.css';
 
 class AlbumsPage extends Component {
   async componentDidMount() {
     await this.props.fetchAlbums(this.props.match.params.id);
+    await this.props.fetchArtist(this.props.match.params.id);
   }
 
   toTracks = id => {
@@ -26,7 +29,10 @@ class AlbumsPage extends Component {
 
     return (
       <div>
-        {albums}
+        <h2>{this.props.artist.name}</h2>
+        <div className="AlbumsBlocks">
+          {albums}
+        </div>
       </div>
     );
   }
@@ -34,10 +40,12 @@ class AlbumsPage extends Component {
 
 const mapStateToProps = state => ({
   albums: state.albums,
+  artist: state.artist,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchAlbums: id => dispatch(fetchAlbums(id)),
+  fetchArtist: id => dispatch(fetchArtist(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumsPage);

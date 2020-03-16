@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {fetchArtists} from "../../store/actions";
 import {connect} from "react-redux";
+
+import {fetchArtists} from "../../store/actions";
 import ArtistBlock from "../../components/ArtistBlock/ArtistBlock";
+import './ArtistsPage.css'
 
 class ArtistsPage extends Component {
   async componentDidMount() {
@@ -26,7 +28,10 @@ class ArtistsPage extends Component {
 
     return (
       <div>
-        {artists}
+        <h2>My Artists</h2>
+        <div className="ArtistsBlocks">
+          {artists}
+        </div>
       </div>
     );
   }
