@@ -13,6 +13,12 @@ const Layout = props => {
 
           <Nav className="ml-auto" navbar>
             <NavItem>
+              <NavLink tag={RouterNavLink} to="/register" exact>Register</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RouterNavLink} to="/login" exact>Log In</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink tag={RouterNavLink} to="/trackHistories" exact>TrackHistories</NavLink>
             </NavItem>
             {/*{user ? (*/}

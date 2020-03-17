@@ -5,6 +5,10 @@ import TrackHistoryBlock from "../../components/TrackHistoryBlock/TrackHistoryBl
 
 class TrackHistoriesPage extends Component {
   async componentDidMount() {
+    if(!this.props.user){
+      console.log('OK')
+    }
+
     await this.props.fetchHistories();
   }
 
@@ -26,6 +30,7 @@ class TrackHistoriesPage extends Component {
 
 const mapStateToProps = state => ({
   histories: state.mainReducer.trackHistories,
+  user: state.mainReducer.user,
 });
 
 const mapDispatchToProps = dispatch => ({
