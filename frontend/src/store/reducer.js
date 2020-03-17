@@ -2,7 +2,7 @@ import {
   FETCH_ALBUM_SUCCESS,
   FETCH_ALBUMS_SUCCESS,
   FETCH_ARTIST_SUCCESS,
-  FETCH_ARTISTS_SUCCESS,
+  FETCH_ARTISTS_SUCCESS, FETCH_TRACK_HISTORIES_SUCCESS,
   FETCH_TRACKS_SUCCESS, LOGIN_USER_FAILURE,
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
@@ -22,6 +22,7 @@ const initialState = {
   albums: [],
   album: {},
   tracks: [],
+  trackHistories: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,6 +49,8 @@ const reducer = (state = initialState, action) => {
       return {...state, album: action.album};
     case FETCH_TRACKS_SUCCESS:
       return {...state, tracks: action.tracks};
+    case FETCH_TRACK_HISTORIES_SUCCESS:
+      return {...state, trackHistories: action.histories};
     default:
       return state
   }

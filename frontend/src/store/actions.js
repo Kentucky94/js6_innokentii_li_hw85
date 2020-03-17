@@ -16,7 +16,8 @@ export const FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';
 
 export const POST_TRACK_HISTORY_SUCCESS = 'POST_TRACK_HISTORY_SUCCESS';
 export const POST_TRACK_HISTORY_FAILURE = 'POST_TRACK_HISTORY_FAILURE';
-
+export const FETCH_TRACK_HISTORIES_SUCCESS = 'FETCH_TRACK_HISTORIES_SUCCESS';
+export const FETCH_TRACK_HISTORIES_FAILURE = 'FETCH_TRACK_HISTORIES_FAILURE';
 
 
 export const registerUserRequest = () => ({type: REGISTER_USER_REQUEST});
@@ -34,20 +35,39 @@ export const fetchTracksSuccess = tracks => ({type: FETCH_TRACKS_SUCCESS, tracks
 
 export const postTrackHistorySuccess = () => ({type: POST_TRACK_HISTORY_SUCCESS});
 export const postTrackHistoryFailure = error => ({type: POST_TRACK_HISTORY_FAILURE, error});
+export const fetchTrackHistoriesSuccess = histories => ({type: FETCH_TRACK_HISTORIES_SUCCESS, histories});
+export const fetchTrackHistoriesFailure = error => ({type: FETCH_TRACK_HISTORIES_FAILURE, error});
 
 
 
 export const postTrackHistory = trackData => {
   return async (dispatch, getState) => {
-    const user = getState().mainReducer.user;
     try{
-      await axiosOrders.post('/track_history', trackData, {headers: {'Authorization': 'Token ' + user.token}})
+      const user = getState().mainReducer.user;
+
+      await axiosOrders.post('/track_history', trackData, {headers: {'Authorization': 'Token ' + user.token}});
 
       dispatch(postTrackHistorySuccess())
     }catch(error){
       dispatch(postTrackHistoryFailure(error));
     }
   }
+};
+
+export const fetchTrackHistories = () => {
+  return async (dispatch, getState) => {
+    try{
+      const user = getState().mainReducer.user;
+
+      const response = await axiosOrders.get('/track_history', {headers: {'Authorization': 'Token ' + user.token}});
+
+      response.data.reverse();
+
+      dispatch(fetchTrackHistoriesSuccess(response.data));
+    }catch(error){
+      dispatch(fetchTrackHistoriesFailure(error))
+    }
+  };
 };
 
 export const registerUser = userData => {

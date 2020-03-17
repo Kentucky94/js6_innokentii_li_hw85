@@ -29,7 +29,7 @@ router.get('/', auth, async (req, res) => {
   const user = req.user;
 
   try{
-    const trackHistories = await TrackHistory.find({user: user._id});
+    const trackHistories = await TrackHistory.find({user: user._id}).populate('track');
 
     res.send(trackHistories);
   }catch(error){

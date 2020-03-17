@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink as RouterNavLink} from 'react-router-dom';
-import {Nav, Navbar, NavbarBrand} from "reactstrap";
+import {Nav, Navbar, NavbarBrand, NavItem, NavLink} from "reactstrap";
 
 import './Layout.css';
 
@@ -12,6 +12,9 @@ const Layout = props => {
           <NavbarBrand tag={RouterNavLink} to="/">My Music App</NavbarBrand>
 
           <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink tag={RouterNavLink} to="/trackHistories" exact>TrackHistories</NavLink>
+            </NavItem>
             {/*{user ? (*/}
             {/*  <UserMenu user={user} />*/}
             {/*) : (*/}
