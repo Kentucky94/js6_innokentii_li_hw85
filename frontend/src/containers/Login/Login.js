@@ -1,31 +1,28 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
 import {Button, Col, Form, FormGroup} from "reactstrap";
-
-import {registerUser} from "../../store/actions";
 import FormElement from "../../components/UI/FormElement/FormElement";
+import {loginUser} from "../../store/actions";
+import {connect} from "react-redux";
 
-class Register extends Component {
-  state = {
+class Login extends Component {
+  state={
     username: '',
     password: '',
   };
 
   inputChangeHandler = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+    this.setState({[event.target.name]: event.target.value})
   };
 
   onSubmitHandler = event => {
     event.preventDefault();
 
-    this.props.registerUser({...this.state});
+    this.props.loginUser({...this.state});
   };
 
   getFieldError = fieldName => {
     try{
-      return this.props.registerError.errors[fieldName].message;
+      return this.props.loginError.errors[fieldName].message;
     }catch(error){
       return undefined;
     }
@@ -34,7 +31,7 @@ class Register extends Component {
   render() {
     return (
       <>
-        <h2>Register new user</h2>
+        <h2>Login user</h2>
         <Form onSubmit={this.onSubmitHandler}>
           <FormElement
             propertyName="username"
@@ -69,11 +66,13 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  registerError: state.mainReducer.registerError,
+  user: state.mainReducer.user,
+  loginLoading: state.mainReducer.loginLoading,
+  loginError: state.mainReducer.loginError,
 });
 
 const mapDispatchToProps = dispatch => ({
-  registerUser: userData => dispatch(registerUser(userData)),
+  loginUser: userData => dispatch(loginUser(userData))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

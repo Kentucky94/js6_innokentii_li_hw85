@@ -38,7 +38,7 @@ class ArtistsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  artists: state.artists,
+  artists: state.mainReducer.artists,
 });
 
 const mapDispatchToProps = dispatch => ({

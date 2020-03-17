@@ -3,12 +3,20 @@ import {
   FETCH_ALBUMS_SUCCESS,
   FETCH_ARTIST_SUCCESS,
   FETCH_ARTISTS_SUCCESS,
-  FETCH_TRACKS_SUCCESS, REGISTER_USER_FAILURE, REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS
+  FETCH_TRACKS_SUCCESS, LOGIN_USER_FAILURE,
+  LOGIN_USER_REQUEST,
+  LOGIN_USER_SUCCESS,
+  REGISTER_USER_FAILURE,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS
 } from "./actions";
 
 const initialState = {
-  registerLoading: null,
+  user: null,
+  registerLoading: false,
   registerError: null,
+  loginLoading: false,
+  loginError: null,
   artists: [],
   artist: {},
   albums: [],
@@ -24,6 +32,12 @@ const reducer = (state = initialState, action) => {
       return {...state, registerLoading: false, registerError: null};
     case REGISTER_USER_FAILURE:
       return {...state, registerLoading: false, registerError: action.error};
+    case LOGIN_USER_REQUEST:
+      return {...state, loginLoading: true};
+    case LOGIN_USER_SUCCESS:
+      return {...state, user: action.user, loginLoading: false, loginError: null};
+    case LOGIN_USER_FAILURE:
+      return {...state, loginLoading: false, loginError: action.error};
     case FETCH_ARTISTS_SUCCESS:
       return {...state, artists: action.artists};
     case FETCH_ARTIST_SUCCESS:

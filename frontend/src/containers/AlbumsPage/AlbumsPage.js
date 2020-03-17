@@ -39,8 +39,8 @@ class AlbumsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  albums: state.albums,
-  artist: state.artist,
+  albums: state.mainReducer.albums,
+  artist: state.mainReducer.artist,
 });
 
 const mapDispatchToProps = dispatch => ({

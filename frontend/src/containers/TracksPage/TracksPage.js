@@ -28,8 +28,8 @@ class TracksPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  tracks: state.tracks,
-  album: state.album,
+  tracks: state.mainReducer.tracks,
+  album: state.mainReducer.album,
 });
 
 const mapDispatchToProps = dispatch => ({
