@@ -21,6 +21,7 @@ class TracksPage extends Component {
         name={track.name}
         duration={track.duration}
         postTrack={this.postHistory}
+        show={!!this.props.user}
       />
     ));
 
