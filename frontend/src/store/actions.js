@@ -65,7 +65,8 @@ export const fetchTrackHistories = () => {
 
       dispatch(fetchTrackHistoriesSuccess(response.data));
     }catch(error){
-      dispatch(fetchTrackHistoriesFailure(error))
+      dispatch(fetchTrackHistoriesFailure(error));
+      dispatch(push('/'))
     }
   };
 };
