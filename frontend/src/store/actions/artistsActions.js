@@ -1,4 +1,5 @@
 import axiosOrders from "../../axiosOrders";
+import {push} from 'connected-react-router'
 
 export const FETCH_ARTISTS_SUCCESS = 'FETCH_ARTISTS_SUCCESS';
 export const FETCH_ARTIST_SUCCESS = 'FETCH_ARTIST_SUCCESS';
@@ -44,6 +45,7 @@ export const postArtist = artistData => {
       await axiosOrders.post('/artists', artistData);
 
       dispatch(postArtistSuccess());
+      dispatch(push('/'))
     }catch(error){
       console.log(error);
     }

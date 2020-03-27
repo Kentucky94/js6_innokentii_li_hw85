@@ -38,6 +38,7 @@ class Register extends Component {
         <Form onSubmit={this.onSubmitHandler}>
           <FormElement
             propertyName="username"
+            title="Username"
             type="text"
             value={this.state.username}
             error={this.getFieldError('username')}
@@ -46,6 +47,7 @@ class Register extends Component {
           />
           <FormElement
             propertyName="password"
+            title="Password"
             type="password"
             value={this.state.password}
             error={this.getFieldError('password')}

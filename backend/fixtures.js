@@ -80,7 +80,7 @@ const run = async () => {
   await Track.create(
     {name: 'Papercut', album: hybrid, track_number: 1, duration: 3.05, isPublished: true},
     {name: 'One Step Closer', album: hybrid, track_number: 2, duration: 2.36, isPublished: true},
-    {name: 'With You', album: hybrid, track_number: 3, duration: 3.23},
+    {name: 'With You', album: hybrid, track_number: 3, duration: 3.23, isPublished: true},
     {name: 'Points Of Authority', album: hybrid, track_number: 4, duration: 3.20, isPublished: true},
     {name: 'Crawling', album: hybrid, track_number: 5, duration: 3.29, isPublished: true},
     {name: 'Foreword', album: meteora, track_number: 1, duration: 0.14, isPublished: true},

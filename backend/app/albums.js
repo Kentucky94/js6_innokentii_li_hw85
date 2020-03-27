@@ -21,6 +21,16 @@ const upload = multer({storage});
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+  try{
+    const albums = await Album.find({isPublished: true});
+
+    res.send(albums);
+  }catch(e){
+    res.status(400).send(e);
+  }
+});
+
 router.get('/all', async (req, res) => {
   try{
     const albums = await Album.find();
@@ -51,7 +61,7 @@ router.get('/byArtist/:artist_id', async (req, res) => {
   }
 });
 
-router.post('/', upload.single('cover_image'), async (req, res) => {
+router.post('/', [auth, permit('admin', 'user')], upload.single('cover_image'), async (req, res) => {
   const albumData = req.body;
 
   if(req.file){

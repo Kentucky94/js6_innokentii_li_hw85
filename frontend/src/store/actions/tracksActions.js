@@ -1,4 +1,5 @@
 import axiosOrders from "../../axiosOrders";
+import {push} from 'connected-react-router';
 
 export const FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';
 export const POST_TRACKS_SUCCESS = 'POST_TRACKS_SUCCESS';
@@ -30,6 +31,7 @@ export const postTrack = trackData => {
       await axiosOrders.post('/tracks', trackData);
 
       dispatch(postTrackSuccess());
+      dispatch(push('/'))
     }catch(error){
       console.log(error);
     }

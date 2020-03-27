@@ -1,6 +1,6 @@
 import {
-  FETCH_ALBUM_SUCCESS,
-  FETCH_ALBUMS_SUCCESS, FETCH_ALL_ALBUMS_SUCCESS,
+  FETCH_ALBUMS_SUCCESS, FETCH_ALBUMS_BY_ARTIST_SUCCESS,
+  FETCH_ALL_ALBUMS_SUCCESS, FETCH_ALBUM_SUCCESS,
 } from "../actions/albumsActions";
 
 const initialState = {
@@ -11,6 +11,8 @@ const initialState = {
 const albumsReducer = (state = initialState, action) => {
   switch(action.type){
     case FETCH_ALBUMS_SUCCESS:
+      return {...state, albums: action.albums};
+    case FETCH_ALBUMS_BY_ARTIST_SUCCESS:
       return {...state, albums: action.albums};
     case FETCH_ALBUM_SUCCESS:
       return {...state, album: action.album};

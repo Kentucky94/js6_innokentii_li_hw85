@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
-import {fetchAlbums} from "../../store/actions/albumsActions";
+import {fetchAlbumsByArtist} from "../../store/actions/albumsActions";
 import {fetchArtist} from "../../store/actions/artistsActions";
 import AlbumBlock from "../../components/AlbumBlock/AlbumBlock";
 import './AlbumsPage.css';
 
 class AlbumsPage extends Component {
   async componentDidMount() {
-    await this.props.fetchAlbums(this.props.match.params.id);
+    await this.props.fetchAlbumsByArtist(this.props.match.params.id);
     await this.props.fetchArtist(this.props.match.params.id);
   }
 
@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAlbums: id => dispatch(fetchAlbums(id)),
+  fetchAlbumsByArtist: id => dispatch(fetchAlbumsByArtist(id)),
   fetchArtist: id => dispatch(fetchArtist(id))
 });
 

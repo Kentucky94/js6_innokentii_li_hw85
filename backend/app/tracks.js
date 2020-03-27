@@ -36,7 +36,7 @@ router.get('/byAlbum/:album_id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', [auth, permit('admin', 'user')], async (req, res) => {
   const trackData = req.body;
 
   const track = new Track(trackData);

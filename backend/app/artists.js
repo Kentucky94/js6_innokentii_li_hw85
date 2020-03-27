@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', upload.single('photo'), async (req, res) => {
+router.post('/', [auth, permit('admin', 'user')], upload.single('photo'), async (req, res) => {
   const artistData = req.body;
 
   if(req.file){
