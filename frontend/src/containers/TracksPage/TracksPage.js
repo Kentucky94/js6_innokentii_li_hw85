@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {fetchAlbum, fetchTracks, postTrackHistory} from "../../store/actions";
 import {connect} from "react-redux";
 import TrackBlock from "../../components/TrackBlock/TrackBlock";
+import {fetchTracks} from "../../store/actions/tracksActions";
+import {fetchAlbum} from "../../store/actions/albumsActions";
+import {postTrackHistory} from "../../store/actions/trackHistoriesActions";
 
 class TracksPage extends Component {
   async componentDidMount() {
@@ -35,9 +37,9 @@ class TracksPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  tracks: state.mainReducer.tracks,
-  album: state.mainReducer.album,
-  user: state.mainReducer.user,
+  tracks: state.tracks.tracks,
+  album: state.albums.album,
+  user: state.users.user,
 });
 
 const mapDispatchToProps = dispatch => ({

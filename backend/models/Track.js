@@ -12,6 +12,11 @@ const TrackSchema = new Schema({
     ref: 'Album',
     require: true,
   },
+  isPublished: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   track_number: Number,
   duration: Number,
 });

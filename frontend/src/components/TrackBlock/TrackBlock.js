@@ -15,7 +15,7 @@ const TrackBlock = props => {
         >
           Add to history
         </button>
-        <h5>{props.duration} seconds</h5>
+        <h5>{props.duration}</h5>
       </div>
     </div>
   );

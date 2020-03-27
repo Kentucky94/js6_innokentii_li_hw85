@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
-import {fetchAlbum, fetchAlbums, fetchArtist} from "../../store/actions";
+import {fetchAlbums} from "../../store/actions/albumsActions";
+import {fetchArtist} from "../../store/actions/artistsActions";
 import AlbumBlock from "../../components/AlbumBlock/AlbumBlock";
 import './AlbumsPage.css';
 
@@ -39,8 +40,8 @@ class AlbumsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  albums: state.mainReducer.albums,
-  artist: state.mainReducer.artist,
+  albums: state.albums.albums,
+  artist: state.artists.artist,
 });
 
 const mapDispatchToProps = dispatch => ({

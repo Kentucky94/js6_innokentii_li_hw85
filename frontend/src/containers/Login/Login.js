@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Col, Form, FormGroup} from "reactstrap";
-import FormElement from "../../components/UI/FormElement/FormElement";
-import {loginUser} from "../../store/actions";
 import {connect} from "react-redux";
+
+import {loginUser} from "../../store/actions/usersActions";
+import FormElement from "../../components/UI/FormElement/FormElement";
 
 class Login extends Component {
   state={
@@ -66,9 +67,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.mainReducer.user,
-  loginLoading: state.mainReducer.loginLoading,
-  loginError: state.mainReducer.loginError,
+  user: state.users.user,
+  loginLoading: state.users.loginLoading,
+  loginError: state.users.loginError,
 });
 
 const mapDispatchToProps = dispatch => ({

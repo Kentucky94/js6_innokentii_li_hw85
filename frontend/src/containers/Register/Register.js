@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Button, Col, Form, FormGroup} from "reactstrap";
 
-import {registerUser} from "../../store/actions";
+import {registerUser} from "../../store/actions/usersActions";
 import FormElement from "../../components/UI/FormElement/FormElement";
 
 class Register extends Component {
@@ -69,7 +69,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  registerError: state.mainReducer.registerError,
+  registerError: state.users.registerError,
 });
 
 const mapDispatchToProps = dispatch => ({

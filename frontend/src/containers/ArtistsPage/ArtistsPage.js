@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 
-import {fetchArtists} from "../../store/actions";
+import {fetchArtists} from "../../store/actions/artistsActions";
 import ArtistBlock from "../../components/ArtistBlock/ArtistBlock";
 import './ArtistsPage.css'
+
 
 class ArtistsPage extends Component {
   async componentDidMount() {
@@ -38,7 +39,7 @@ class ArtistsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  artists: state.mainReducer.artists,
+  artists: state.artists.artists,
 });
 
 const mapDispatchToProps = dispatch => ({

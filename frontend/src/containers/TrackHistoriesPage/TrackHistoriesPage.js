@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchTrackHistories} from "../../store/actions";
+import {fetchTrackHistories} from "../../store/actions/trackHistoriesActions";
 import {connect} from "react-redux";
 import TrackHistoryBlock from "../../components/TrackHistoryBlock/TrackHistoryBlock";
 
@@ -11,6 +11,7 @@ class TrackHistoriesPage extends Component {
   render() {
     const histories = this.props.histories.map(history =>
       <TrackHistoryBlock
+        key={history._id}
         trackName={history.track.name}
         datetime={history.datetime}
       />
@@ -25,7 +26,7 @@ class TrackHistoriesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  histories: state.mainReducer.trackHistories,
+  histories: state.trackHistories.trackHistories,
 });
 
 const mapDispatchToProps = dispatch => ({

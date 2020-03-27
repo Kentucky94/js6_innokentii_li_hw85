@@ -17,11 +17,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const run = async () => {
-  await mongoose.connect('mongodb://localhost/musicApp', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  });
+  await mongoose.connect(config.database, config.databaseOptions);
 
   app.use('/artists', artists);
   app.use('/albums', albums);
