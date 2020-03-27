@@ -69,7 +69,8 @@ export const publishArtist = artistId => {
     try{
       await axiosOrders.post('/artists/' + artistId + '/publish');
 
-      dispatch(publishArtistSuccess())
+      dispatch(publishArtistSuccess());
+      dispatch(fetchAllArtists());
     }catch(error){
       console.log(error);
     }
@@ -81,7 +82,8 @@ export const deleteArtist = artistId => {
     try{
       await axiosOrders.delete('/artists/' + artistId);
 
-      dispatch(deleteArtistSuccess())
+      dispatch(deleteArtistSuccess());
+      dispatch(fetchAllArtists());
     }catch(error){
       console.log(error);
     }

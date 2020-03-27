@@ -83,7 +83,8 @@ export const publishAlbum = albumId => {
     try{
       await axiosOrders.post('/albums/' + albumId + '/publish');
 
-      dispatch(publishAlbumSuccess())
+      dispatch(publishAlbumSuccess());
+      dispatch(fetchAllAlbums());
     }catch(error){
       console.log(error);
     }
@@ -95,7 +96,8 @@ export const deleteAlbum = albumId => {
     try{
       await axiosOrders.delete('/albums/' + albumId);
 
-      dispatch(deleteAlbumSuccess())
+      dispatch(deleteAlbumSuccess());
+      dispatch(fetchAllAlbums());
     }catch(error){
       console.log(error);
     }

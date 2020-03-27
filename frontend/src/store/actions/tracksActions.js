@@ -55,7 +55,8 @@ export const publishTrack = trackId => {
     try{
       await axiosOrders.post('/tracks/' + trackId + '/publish');
 
-      dispatch(publishTrackSuccess())
+      dispatch(publishTrackSuccess());
+      dispatch(fetchAllTracks());
     }catch(error){
       console.log(error);
     }
@@ -67,7 +68,8 @@ export const deleteTrack = trackId => {
     try{
       await axiosOrders.delete('/tracks/' + trackId);
 
-      dispatch(deleteTrackSuccess())
+      dispatch(deleteTrackSuccess());
+      dispatch(fetchAllTracks());
     }catch(error){
       console.log(error);
     }

@@ -10,6 +10,7 @@ import TrackHistoriesPage from "./containers/TrackHistoriesPage/TrackHistoriesPa
 import AddArtistPage from "./containers/AddArtistPage/AddArtistPage";
 import AddAlbumPage from "./containers/AddAlbumPage/AddAlbumPage";
 import AddTrackPage from "./containers/AddTrackPage/AddTrackPage";
+import AdminPage from "./containers/AdminPage/AdminPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route path='/' exact component={ArtistsPage}/>
+          <Route path='/admin/list' exact component={AdminPage}/>
           <Route path='/register' exact component={Register}/>
           <Route path='/login' exact component={Login} />
           <Route path='/artists/add' exact component={AddArtistPage} />
