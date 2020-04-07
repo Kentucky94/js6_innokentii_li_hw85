@@ -38,6 +38,18 @@ export const registerUser = userData => {
   };
 };
 
+export const loginWithFacebook = facebookData => {
+  return async dispatch => {
+    try{
+      const response = await axiosOrders.post('/users/facebook', facebookData);
+
+      dispatch(loginUserSuccess(response.data))
+    }catch(e){
+      console.log(e);
+    }
+  };
+};
+
 export const loginUser = userData => {
   return async dispatch => {
     try{

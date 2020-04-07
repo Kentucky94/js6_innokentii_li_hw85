@@ -9,6 +9,8 @@ class Register extends Component {
   state = {
     username: '',
     password: '',
+    displayName: '',
+    avatarImage: '',
   };
 
   inputChangeHandler = event => {
@@ -17,10 +19,24 @@ class Register extends Component {
     });
   };
 
+  fileChangeHandler = event => {
+    this.setState({
+      [event.target.name]: event.target.files[0]
+    })
+  };
+
   onSubmitHandler = event => {
     event.preventDefault();
 
-    this.props.registerUser({...this.state});
+    const formData = new FormData();
+
+    Object.keys(this.state).forEach(key => {
+      const value = this.state[key];
+
+      formData.append(key, value);
+    });
+
+    this.props.registerUser(formData);
   };
 
   getFieldError = fieldName => {
@@ -53,6 +69,20 @@ class Register extends Component {
             error={this.getFieldError('password')}
             onChange={this.inputChangeHandler}
             required
+          />
+          <FormElement
+            propertyName="displayName"
+            title="Display Name"
+            type="text"
+            value={this.state.displayName}
+            onChange={this.inputChangeHandler}
+            required
+          />
+          <FormElement
+            propertyName="avatarImage"
+            title="Avatar Image"
+            type="file"
+            onChange={this.fileChangeHandler}
           />
           <FormGroup row>
             <Col sm={{offset: 2, size: 10}}>

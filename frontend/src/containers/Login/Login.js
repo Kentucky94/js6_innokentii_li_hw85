@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 
 import {loginUser} from "../../store/actions/usersActions";
 import FormElement from "../../components/UI/FormElement/FormElement";
+import FacebookLogin from "../../components/FacebookLogin/FacebookLogin";
 
 class Login extends Component {
   state={
@@ -33,6 +34,7 @@ class Login extends Component {
     return (
       <>
         <h2>Login user</h2>
+        <FacebookLogin />
         <Form onSubmit={this.onSubmitHandler}>
           <FormElement
             propertyName="username"

@@ -20,12 +20,14 @@ const run = async () => {
     username: 'admin',
     password: 'admin123',
     token: nanoid(),
-    role: 'admin'
+    role: 'admin',
+    displayName: 'Admin Adminovich'
   }, {
     username: 'user',
     password: '123',
     token: nanoid(),
-    role: 'user'
+    role: 'user',
+    displayName: 'Bruce Wayne',
   });
 
   const [lp, met, para] = await Artist.create({
@@ -100,7 +102,7 @@ const run = async () => {
     {name: 'Disposable Heroes', album: master, track_number: 5, duration: 8.17, isPublished: true},
     {name: 'Hard Times', album: laughter, track_number: 1, duration: 3.02, isPublished: true},
     {name: 'Rose-Colored Boy', album: laughter, track_number: 2, duration: 3.32, isPublished: true},
-    {name: 'Told YOu So', album: laughter, track_number: 3, duration: 3.08, isPublished: true},
+    {name: 'Told You So', album: laughter, track_number: 3, duration: 3.08, isPublished: true},
     {name: 'Forgiveness', album: laughter, track_number: 4, duration: 3.39, isPublished: true},
     {name: 'Fake Happy', album: laughter, track_number: 5, duration: 3.55, isPublished: true},
   );

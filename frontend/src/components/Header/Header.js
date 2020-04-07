@@ -7,7 +7,6 @@ import './Header.css'
 import {logoutUser} from "../../store/actions/usersActions";
 import AnonMenu from "../UI/AnonMenu";
 import UserMenu from "../UI/UserMenu";
-import AdminPage from "../../containers/AdminPage/AdminPage";
 
 const Header = () => {
   const user = useSelector(state => state.users.user);
@@ -25,7 +24,7 @@ const Header = () => {
             </NavItem> : null}
           {!user ?
             <AnonMenu/> :
-            <UserMenu onClick={() => dispatch(logoutUser())}/>
+            <UserMenu user={user} onClick={() => dispatch(logoutUser())}/>
           }
         </Nav>
       </Navbar>
